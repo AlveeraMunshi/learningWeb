@@ -8,38 +8,42 @@
 <body>
     <h1>The Life You Chose</h1>
 
+    <hr>
+
     <h2>[YOUR PRIORITIES]</h2>
 
-    <p>The choices you've made start adding up. Each decision has weighted what matters most to you. Now, the pattern becomes clear.</p>
+    <p>The choices you've made start adding up. <strong>Each decision has weighted what matters most to you.</strong> Now, the pattern becomes clear.</p>
 
     <hr>
 
-    <p>Your values:</p>
+    <h3>Your Current Values</h3>
 
     <div id="values">
-        <p><strong>Ambition:</strong> <span id="ambitionScore">0</span></p>
-        <p><strong>Love:</strong> <span id="loveScore">0</span></p>
-        <p><strong>Freedom:</strong> <span id="freedomScore">0</span></p>
+        <p><strong>✦ Ambition:</strong> <span id="ambitionScore">0</span></p>
+        <p><strong>✦ Love:</strong> <span id="loveScore">0</span></p>
+        <p><strong>✦ Freedom:</strong> <span id="freedomScore">0</span></p>
     </div>
 
     <hr>
 
-    <h2>Your Priority Order:</h2>
+    <h2>Your Priority Order</h2>
 
     <!-- Visual representation of priorities revealed -->
     <pre>
     1️⃣  2️⃣  3️⃣
     </pre>
 
-    <ol>
-        <li id="priority1"></li>
-        <li id="priority2"></li>
-        <li id="priority3"></li>
-    </ol>
+    <blockquote>
+        <ol>
+            <li id="priority1"></li>
+            <li id="priority2"></li>
+            <li id="priority3"></li>
+        </ol>
+    </blockquote>
 
     <hr>
 
-    <p><a href="conflict.html" id="continueLink">Continue to Age 40</a></p>
+    <p><strong><a href="conflict.html" id="continueLink">→ Continue to Age 40</a></strong></p>
 
     <script>
         // Extract the value scores from the URL query parameters
