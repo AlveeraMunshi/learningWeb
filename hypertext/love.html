@@ -56,5 +56,13 @@
     <p><strong><a href="freedom.html?ambition=1&love=-1&freedom=2">→ Let them go. Choose your own path.</a></strong></p>
     <p><em>Values: Freedom <strong>+2</strong> | Ambition <strong>+1</strong> | Love <strong>-1</strong></em></p>
 
+    <script>
+        // Force re-render to ensure decorative Unicode characters display
+        if (!sessionStorage.getItem('pageReloaded')) {
+            sessionStorage.setItem('pageReloaded', 'true');
+            location.reload();
+        }
+    </script>
+
 </body>
 </html>

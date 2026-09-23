@@ -93,6 +93,12 @@
         document.getElementById('final1').textContent = '1. ' + p1;
         document.getElementById('final2').textContent = '2. ' + p2;
         document.getElementById('final3').textContent = '3. ' + p3;
+
+        // Force re-render to ensure decorative Unicode characters display
+        if (!sessionStorage.getItem('pageReloaded')) {
+            sessionStorage.setItem('pageReloaded', 'true');
+            location.reload();
+        }
     </script>
 
 </body>

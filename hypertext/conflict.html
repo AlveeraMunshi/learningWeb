@@ -153,6 +153,12 @@
         // Set up the second choice link with its gain/loss consequences
         document.getElementById('choiceBLink').innerHTML = scenario.choiceB;
         document.getElementById('choiceBLink').href = `consequence.html?choice=B&gain=${encodeURIComponent(scenario.gainB)}&loss=${encodeURIComponent(scenario.lossB)}&p1=${p1}&p2=${p2}`;
+
+        // Force re-render to ensure decorative Unicode characters display
+        if (!sessionStorage.getItem('pageReloaded')) {
+            sessionStorage.setItem('pageReloaded', 'true');
+            location.reload();
+        }
     </script>
 
 </body>

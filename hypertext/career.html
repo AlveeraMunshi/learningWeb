@@ -60,5 +60,13 @@
     <p><strong><a href="love.html?ambition=-1&love=1&freedom=0">→ Turn it down. Stay close to what matters.</a></strong></p>
     <p><em>Values: Love <strong>+1</strong> | Ambition <strong>-1</strong></em></p>
 
+    <script>
+        // Force re-render to ensure decorative Unicode characters display
+        if (!sessionStorage.getItem('pageReloaded')) {
+            sessionStorage.setItem('pageReloaded', 'true');
+            location.reload();
+        }
+    </script>
+
 </body>
 </html>

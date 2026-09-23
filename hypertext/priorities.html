@@ -83,6 +83,12 @@
         const priority2 = values[1].name.toLowerCase();
         const link = `conflict.html?p1=${priority1}&p2=${priority2}&ambition=${ambition}&love=${love}&freedom=${freedom}`;
         document.getElementById('continueLink').href = link;
+
+        // Force re-render to ensure decorative Unicode characters display
+        if (!sessionStorage.getItem('pageReloaded')) {
+            sessionStorage.setItem('pageReloaded', 'true');
+            location.reload();
+        }
     </script>
 
 </body>

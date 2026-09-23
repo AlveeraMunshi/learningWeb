@@ -60,6 +60,12 @@
         // Build link to the ending page, passing along the priority info
         const endingLink = `ending.html?p1=${p1}&p2=${p2}`;
         document.getElementById('endingLink').href = endingLink;
+
+        // Force re-render to ensure decorative Unicode characters display
+        if (!sessionStorage.getItem('pageReloaded')) {
+            sessionStorage.setItem('pageReloaded', 'true');
+            location.reload();
+        }
     </script>
 
 </body>
