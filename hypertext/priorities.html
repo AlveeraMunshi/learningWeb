@@ -37,33 +37,35 @@
     <p><a href="conflict.html" id="continueLink">Continue to Age 40</a></p>
 
     <script>
-        // Parse query parameters
+        // Extract the value scores from the URL query parameters
+        // Each decision page passes values as ?ambition=X&love=Y&freedom=Z
         const params = new URLSearchParams(window.location.search);
         let ambition = parseInt(params.get('ambition')) || 0;
         let love = parseInt(params.get('love')) || 0;
         let freedom = parseInt(params.get('freedom')) || 0;
 
-        // Display current scores
+        // Display the cumulative scores on the page so reader can see their totals
         document.getElementById('ambitionScore').textContent = ambition;
         document.getElementById('loveScore').textContent = love;
         document.getElementById('freedomScore').textContent = freedom;
 
-        // Create array of values with names
+        // Create an array to hold all three values so we can sort them by score
         const values = [
             { name: 'Ambition', score: ambition },
             { name: 'Love', score: love },
             { name: 'Freedom', score: freedom }
         ];
 
-        // Sort by score (highest first)
+        // Sort the array by score in descending order (highest priority first)
         values.sort((a, b) => b.score - a.score);
 
-        // Display priorities
+        // Display the ranked priorities in order
         document.getElementById('priority1').textContent = values[0].name + ' (#1)';
         document.getElementById('priority2').textContent = values[1].name + ' (#2)';
         document.getElementById('priority3').textContent = values[2].name + ' (#3)';
 
-        // Build link with query params for next page
+        // Build the link to the conflict page with priority info
+        // Pass the top 2 priorities so conflict.html can show the right scenario
         const priority1 = values[0].name.toLowerCase();
         const priority2 = values[1].name.toLowerCase();
         const link = `conflict.html?p1=${priority1}&p2=${priority2}&ambition=${ambition}&love=${love}&freedom=${freedom}`;

@@ -8,24 +8,29 @@
 <body>
     <h1>The Life You Chose</h1>
 
+    <!-- Final reflection at age 70 looking back on life -->
     <h2>[AGE 70]</h2>
     <h2>LOOKING BACK</h2>
 
+    <!-- ASCII art showing the passage of time -->
     <pre>
     |
     ↓
     </pre>
 
+    <!-- Reflection on how a lifetime of small choices shaped the path -->
     <p>Seventy years have passed. You've lived a full life. There were moments of joy and moments of regret. You made choices that built the life you have now.</p>
 
     <p>Looking back, you can see the pattern clearly. The decisions you made weren't random. They revealed something fundamental about who you are and what you value.</p>
 
     <hr>
 
+    <!-- The central message: we are the sum of our choices -->
     <h2>"This is the life you chose."</h2>
 
     <hr>
 
+    <!-- Display the final priority ranking based on all choices made -->
     <h3>Your Final Ranking:</h3>
 
     <ol>
@@ -36,12 +41,14 @@
 
     <hr>
 
+    <!-- Philosophical conclusion about choice and meaning -->
     <p>You made the choices that mattered. Some brought fulfillment. Some brought regret. But they were yours. And in the end, that's what made them meaningful.</p>
 
     <p>The life you have is the life you chose, one decision at a time.</p>
 
     <hr>
 
+    <!-- ASCII art inviting reader to replay -->
     <pre>
     |
     ↓
@@ -51,19 +58,21 @@
     └──────→
     </pre>
 
+    <!-- Link back to start page so reader can replay with different choices -->
     <p><a href="index.html">Start Over with Different Choices</a></p>
 
     <script>
-        // Parse query parameters
+        // Extract priority information from query parameters passed by consequence.html
         const params = new URLSearchParams(window.location.search);
+        // Get the top 2 priorities and capitalize them (e.g., 'ambition' becomes 'Ambition')
         const p1 = (params.get('p1') || 'ambition').charAt(0).toUpperCase() + (params.get('p1') || 'ambition').slice(1);
         const p2 = (params.get('p2') || 'love').charAt(0).toUpperCase() + (params.get('p2') || 'love').slice(1);
 
-        // Determine p3 (the remaining priority)
+        // Find the third priority (whichever one wasn't #1 or #2)
         const allPriorities = ['Ambition', 'Love', 'Freedom'];
         const p3 = allPriorities.find(p => p !== p1 && p !== p2);
 
-        // Display final rankings
+        // Display the final rankings on the page
         document.getElementById('final1').textContent = '1. ' + p1;
         document.getElementById('final2').textContent = '2. ' + p2;
         document.getElementById('final3').textContent = '3. ' + p3;

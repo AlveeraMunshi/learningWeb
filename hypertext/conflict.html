@@ -26,7 +26,8 @@
     <p><a href="consequence.html" id="choiceBLink">Choice B</a></p>
 
     <script>
-        // Parse query parameters
+        // Extract priority information from query parameters passed by priorities.html
+        // p1 and p2 are the top two priorities (e.g., 'ambition' and 'love')
         const params = new URLSearchParams(window.location.search);
         const p1 = params.get('p1') || 'ambition';
         const p2 = params.get('p2') || 'love';
@@ -34,8 +35,11 @@
         const love = params.get('love') || 0;
         const freedom = params.get('freedom') || 0;
 
-        // Define scenarios based on priority combinations
+        // Define all possible conflict scenarios based on priority combinations
+        // Each combination of top 2 priorities gets a unique scenario where they clash
+        // The scenarios object maps priority pairs (e.g., 'ambition-love') to detailed scenarios
         const scenarios = {
+            // Ambition #1, Love #2: Career success vs. family relationships
             'ambition-love': {
                 title: 'Career vs. Family',
                 scenario: 'Your company offers you a promotion—a position at the helm of a major project. It would cement your legacy. But it requires total commitment: long hours, frequent travel, nights away from home.',
@@ -47,6 +51,7 @@
                 gainB: 'Deeper family bonds, peace of mind',
                 lossB: 'Career opportunity and recognition'
             },
+            // Ambition #1, Freedom #2: Career stability vs. new adventure
             'ambition-freedom': {
                 title: 'Career vs. Adventure',
                 scenario: 'You've spent two decades building something meaningful. You've achieved success. But lately, you've been restless. A friend invites you to leave it all behind and pursue a dream project together—a venture that would require you to abandon your current position and start from scratch.',
@@ -58,6 +63,7 @@
                 gainB: 'A new chapter and personal fulfillment',
                 lossB: 'Security and the status you've earned'
             },
+            // Love #1, Ambition #2: Relationship commitment vs. professional dreams
             'love-ambition': {
                 title: 'Relationship vs. Dream Job',
                 scenario: 'You've built a loving, committed partnership. You have stability, trust, and deep companionship. Then the perfect job appears—one you've dreamed about since childhood. It\'s in a different country, and your partner can\'t or won\'t leave their own career.',
@@ -69,6 +75,7 @@
                 gainB: 'Committed partnership and emotional security',
                 lossB: 'A dream deferred, perhaps indefinitely'
             },
+            // Love #1, Freedom #2: Partnership commitment vs. personal independence
             'love-freedom': {
                 title: 'Commitment vs. Independence',
                 scenario: 'You have someone you love deeply. They want commitment: marriage, children, a shared life plan. But you\'ve always valued your independence above all else. The thought of being tied down—even to someone you love—feels suffocating.',
@@ -80,6 +87,7 @@
                 gainB: 'Deep partnership and shared life',
                 lossB: 'Independence and the ability to change course'
             },
+            // Freedom #1, Ambition #2: Adventure/travel vs. professional responsibility
             'freedom-ambition': {
                 title: 'Adventure vs. Responsibility',
                 scenario: 'You\'ve built a successful career that demands consistency and presence. But you\'re realizing life is short. You have a chance to travel, to explore, to live without anchors. Doing so would mean walking away from the professional responsibilities others depend on you for.',
@@ -91,6 +99,7 @@
                 gainB: 'Experiences and self-discovery',
                 lossB: 'Professional status and others\' respect'
             },
+            // Freedom #1, Love #2: Personal independence vs. romantic partnership
             'freedom-love': {
                 title: 'Independence vs. Partnership',
                 scenario: 'You\'ve spent years living life on your own terms. You travel when you want, make decisions without compromise. Then you meet someone extraordinary, and they want you to plant roots. Marriage, a shared home, intertwined futures.',
@@ -104,11 +113,12 @@
             }
         };
 
-        // Determine the scenario key
+        // Build the scenario key by combining the two top priorities (e.g., 'ambition-love')
         const key = p1 + '-' + p2;
-        const scenario = scenarios[key] || scenarios['ambition-love']; // default fallback
+        // Look up the scenario; use ambition-love as fallback if no match
+        const scenario = scenarios[key] || scenarios['ambition-love'];
 
-        // Display scenario
+        // Insert the scenario content into the page dynamically
         const scenarioDiv = document.getElementById('scenario');
         scenarioDiv.innerHTML = `
             <h3>${scenario.title}</h3>
@@ -116,10 +126,12 @@
             <p><em>${scenario.consequence}</em></p>
         `;
 
-        // Set up choice links
+        // Set up the first choice link with its gain/loss consequences
+        // encodeURIComponent escapes special characters so they work in URLs
         document.getElementById('choiceALink').innerHTML = scenario.choiceA;
         document.getElementById('choiceALink').href = `consequence.html?choice=A&gain=${encodeURIComponent(scenario.gainA)}&loss=${encodeURIComponent(scenario.lossA)}&p1=${p1}&p2=${p2}`;
 
+        // Set up the second choice link with its gain/loss consequences
         document.getElementById('choiceBLink').innerHTML = scenario.choiceB;
         document.getElementById('choiceBLink').href = `consequence.html?choice=B&gain=${encodeURIComponent(scenario.gainB)}&loss=${encodeURIComponent(scenario.lossB)}&p1=${p1}&p2=${p2}`;
     </script>
