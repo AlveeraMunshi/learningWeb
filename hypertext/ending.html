@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Life You Chose - Ending</title>
+</head>
+<body>
+    <h1>The Life You Chose</h1>
+
+    <h2>[AGE 70]</h2>
+    <h2>LOOKING BACK</h2>
+
+    <pre>
+    |
+    ↓
+    </pre>
+
+    <p>Seventy years have passed. You've lived a full life. There were moments of joy and moments of regret. You made choices that built the life you have now.</p>
+
+    <p>Looking back, you can see the pattern clearly. The decisions you made weren't random. They revealed something fundamental about who you are and what you value.</p>
+
+    <hr>
+
+    <h2>"This is the life you chose."</h2>
+
+    <hr>
+
+    <h3>Your Final Ranking:</h3>
+
+    <ol>
+        <li id="final1">1. Loading...</li>
+        <li id="final2">2. Loading...</li>
+        <li id="final3">3. Loading...</li>
+    </ol>
+
+    <hr>
+
+    <p>You made the choices that mattered. Some brought fulfillment. Some brought regret. But they were yours. And in the end, that's what made them meaningful.</p>
+
+    <p>The life you have is the life you chose, one decision at a time.</p>
+
+    <hr>
+
+    <pre>
+    |
+    ↓
+
+    [CHOOSE DIFFERENTLY?]
+
+    └──────→
+    </pre>
+
+    <p><a href="index.html">Start Over with Different Choices</a></p>
+
+    <script>
+        // Parse query parameters
+        const params = new URLSearchParams(window.location.search);
+        const p1 = (params.get('p1') || 'ambition').charAt(0).toUpperCase() + (params.get('p1') || 'ambition').slice(1);
+        const p2 = (params.get('p2') || 'love').charAt(0).toUpperCase() + (params.get('p2') || 'love').slice(1);
+
+        // Determine p3 (the remaining priority)
+        const allPriorities = ['Ambition', 'Love', 'Freedom'];
+        const p3 = allPriorities.find(p => p !== p1 && p !== p2);
+
+        // Display final rankings
+        document.getElementById('final1').textContent = '1. ' + p1;
+        document.getElementById('final2').textContent = '2. ' + p2;
+        document.getElementById('final3').textContent = '3. ' + p3;
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Life You Chose - Conflict</title>
+</head>
+<body>
+    <h1>The Life You Chose</h1>
+
+    <h2>[YOUR VALUES COLLIDE]</h2>
+    <h2>Age 40</h2>
+
+    <p>At some point in life, you can't have it all. Your two most important values are about to clash, and you'll have to choose.</p>
+
+    <hr>
+
+    <div id="scenario">
+        <p>Loading your story...</p>
+    </div>
+
+    <hr>
+
+    <p><a href="consequence.html" id="choiceALink">Choice A</a></p>
+    <p>—</p>
+    <p><a href="consequence.html" id="choiceBLink">Choice B</a></p>
+
+    <script>
+        // Parse query parameters
+        const params = new URLSearchParams(window.location.search);
+        const p1 = params.get('p1') || 'ambition';
+        const p2 = params.get('p2') || 'love';
+        const ambition = params.get('ambition') || 0;
+        const love = params.get('love') || 0;
+        const freedom = params.get('freedom') || 0;
+
+        // Define scenarios based on priority combinations
+        const scenarios = {
+            'ambition-love': {
+                title: 'Career vs. Family',
+                scenario: 'Your company offers you a promotion—a position at the helm of a major project. It would cement your legacy. But it requires total commitment: long hours, frequent travel, nights away from home.',
+                consequence: 'Your family needs you right now. Your partner is struggling with health issues. Your child is navigating adolescence.',
+                choiceA: 'Take the promotion. Your career legacy matters.',
+                choiceB: 'Turn it down. Family comes first.',
+                gainA: 'Career achievement and financial security',
+                lossA: 'Time with loved ones, possibly their resentment',
+                gainB: 'Deeper family bonds, peace of mind',
+                lossB: 'Career opportunity and recognition'
+            },
+            'ambition-freedom': {
+                title: 'Career vs. Adventure',
+                scenario: 'You've spent two decades building something meaningful. You've achieved success. But lately, you've been restless. A friend invites you to leave it all behind and pursue a dream project together—a venture that would require you to abandon your current position and start from scratch.',
+                consequence: 'The risk is real. You might lose everything you've built.',
+                choiceA: 'Stay and consolidate your achievements.',
+                choiceB: 'Leave and pursue the adventure.',
+                gainA: 'Stability and the fruits of your labor',
+                lossA: 'The chance to do something radically different',
+                gainB: 'A new chapter and personal fulfillment',
+                lossB: 'Security and the status you've earned'
+            },
+            'love-ambition': {
+                title: 'Relationship vs. Dream Job',
+                scenario: 'You've built a loving, committed partnership. You have stability, trust, and deep companionship. Then the perfect job appears—one you've dreamed about since childhood. It\'s in a different country, and your partner can\'t or won\'t leave their own career.',
+                consequence: 'Long-distance relationships rarely survive this kind of distance.',
+                choiceA: 'Pursue the dream job. It\'s now or never.',
+                choiceB: 'Choose the relationship over the job.',
+                gainA: 'Professional fulfillment and personal dreams',
+                lossA: 'The relationship, possibly forever',
+                gainB: 'Committed partnership and emotional security',
+                lossB: 'A dream deferred, perhaps indefinitely'
+            },
+            'love-freedom': {
+                title: 'Commitment vs. Independence',
+                scenario: 'You have someone you love deeply. They want commitment: marriage, children, a shared life plan. But you\'ve always valued your independence above all else. The thought of being tied down—even to someone you love—feels suffocating.',
+                consequence: 'This person is asking for a choice: commit or let them go.',
+                choiceA: 'Let them go. Your freedom is too important.',
+                choiceB: 'Commit. Love is worth the sacrifice.',
+                gainA: 'Your autonomy and life on your own terms',
+                lossA: 'A love that might never come again',
+                gainB: 'Deep partnership and shared life',
+                lossB: 'Independence and the ability to change course'
+            },
+            'freedom-ambition': {
+                title: 'Adventure vs. Responsibility',
+                scenario: 'You\'ve built a successful career that demands consistency and presence. But you\'re realizing life is short. You have a chance to travel, to explore, to live without anchors. Doing so would mean walking away from the professional responsibilities others depend on you for.',
+                consequence: 'People rely on you. Leaving would disrupt their plans.',
+                choiceA: 'Stay the course. You have people who need you.',
+                choiceB: 'Leave and find yourself while you still can.',
+                gainA: 'Stability and the trust of your colleagues',
+                lossA: 'Regret and wonder about the road not taken',
+                gainB: 'Experiences and self-discovery',
+                lossB: 'Professional status and others\' respect'
+            },
+            'freedom-love': {
+                title: 'Independence vs. Partnership',
+                scenario: 'You\'ve spent years living life on your own terms. You travel when you want, make decisions without compromise. Then you meet someone extraordinary, and they want you to plant roots. Marriage, a shared home, intertwined futures.',
+                consequence: 'They\'re asking you to give up the freedom that\'s always defined you.',
+                choiceA: 'Maintain your independence. You\'ve always been alone.',
+                choiceB: 'Take the leap into partnership.',
+                gainA: 'Continued autonomy and adventure',
+                lossA: 'A profound connection and lifetime partnership',
+                gainB: 'Love and shared meaning',
+                lossB: 'Freedom and the unexamined life'
+            }
+        };
+
+        // Determine the scenario key
+        const key = p1 + '-' + p2;
+        const scenario = scenarios[key] || scenarios['ambition-love']; // default fallback
+
+        // Display scenario
+        const scenarioDiv = document.getElementById('scenario');
+        scenarioDiv.innerHTML = `
+            <h3>${scenario.title}</h3>
+            <p>${scenario.scenario}</p>
+            <p><em>${scenario.consequence}</em></p>
+        `;
+
+        // Set up choice links
+        document.getElementById('choiceALink').innerHTML = scenario.choiceA;
+        document.getElementById('choiceALink').href = `consequence.html?choice=A&gain=${encodeURIComponent(scenario.gainA)}&loss=${encodeURIComponent(scenario.lossA)}&p1=${p1}&p2=${p2}`;
+
+        document.getElementById('choiceBLink').innerHTML = scenario.choiceB;
+        document.getElementById('choiceBLink').href = `consequence.html?choice=B&gain=${encodeURIComponent(scenario.gainB)}&loss=${encodeURIComponent(scenario.lossB)}&p1=${p1}&p2=${p2}`;
+    </script>
+
+</body>
+</html>

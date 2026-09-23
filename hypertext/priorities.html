@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Life You Chose - Your Priorities</title>
+</head>
+<body>
+    <h1>The Life You Chose</h1>
+
+    <h2>[YOUR PRIORITIES]</h2>
+
+    <p>The choices you've made start adding up. Each decision has weighted what matters most to you. Now, the pattern becomes clear.</p>
+
+    <hr>
+
+    <p>Your values:</p>
+
+    <div id="values">
+        <p><strong>Ambition:</strong> <span id="ambitionScore">0</span></p>
+        <p><strong>Love:</strong> <span id="loveScore">0</span></p>
+        <p><strong>Freedom:</strong> <span id="freedomScore">0</span></p>
+    </div>
+
+    <hr>
+
+    <h2>Your Priority Order:</h2>
+
+    <ol>
+        <li id="priority1"></li>
+        <li id="priority2"></li>
+        <li id="priority3"></li>
+    </ol>
+
+    <hr>
+
+    <p><a href="conflict.html" id="continueLink">Continue to Age 40</a></p>
+
+    <script>
+        // Parse query parameters
+        const params = new URLSearchParams(window.location.search);
+        let ambition = parseInt(params.get('ambition')) || 0;
+        let love = parseInt(params.get('love')) || 0;
+        let freedom = parseInt(params.get('freedom')) || 0;
+
+        // Display current scores
+        document.getElementById('ambitionScore').textContent = ambition;
+        document.getElementById('loveScore').textContent = love;
+        document.getElementById('freedomScore').textContent = freedom;
+
+        // Create array of values with names
+        const values = [
+            { name: 'Ambition', score: ambition },
+            { name: 'Love', score: love },
+            { name: 'Freedom', score: freedom }
+        ];
+
+        // Sort by score (highest first)
+        values.sort((a, b) => b.score - a.score);
+
+        // Display priorities
+        document.getElementById('priority1').textContent = values[0].name + ' (#1)';
+        document.getElementById('priority2').textContent = values[1].name + ' (#2)';
+        document.getElementById('priority3').textContent = values[2].name + ' (#3)';
+
+        // Build link with query params for next page
+        const priority1 = values[0].name.toLowerCase();
+        const priority2 = values[1].name.toLowerCase();
+        const link = `conflict.html?p1=${priority1}&p2=${priority2}&ambition=${ambition}&love=${love}&freedom=${freedom}`;
+        document.getElementById('continueLink').href = link;
+    </script>
+
+</body>
+</html>

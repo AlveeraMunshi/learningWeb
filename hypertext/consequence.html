@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Life You Chose - Consequence</title>
+</head>
+<body>
+    <h1>The Life You Chose</h1>
+
+    <h2>[CONSEQUENCE]</h2>
+    <h2>The Price of Choosing</h2>
+
+    <p>Every choice has a cost. There are no perfect decisions, only the ones that align with who you are.</p>
+
+    <hr>
+
+    <h3>What You Gained</h3>
+    <p id="gain">Loading...</p>
+
+    <hr>
+
+    <h3>What You Lost</h3>
+    <p id="loss">Loading...</p>
+
+    <hr>
+
+    <p><a href="ending.html" id="endingLink">Move Forward to Age 70</a></p>
+
+    <script>
+        // Parse query parameters
+        const params = new URLSearchParams(window.location.search);
+        const gain = params.get('gain') || 'Something meaningful';
+        const loss = params.get('loss') || 'Something precious';
+        const p1 = params.get('p1') || 'ambition';
+        const p2 = params.get('p2') || 'love';
+
+        // Display gains and losses
+        document.getElementById('gain').textContent = gain;
+        document.getElementById('loss').textContent = loss;
+
+        // Build link to ending with priorities
+        const endingLink = `ending.html?p1=${p1}&p2=${p2}`;
+        document.getElementById('endingLink').href = endingLink;
+    </script>
+
+</body>
+</html>
