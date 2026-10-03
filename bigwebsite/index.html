@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Side Quest Map</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- The whole page is one giant map. #map is 2600 x 2600 so the browser
+         has to scroll both ways. Everything below is positioned on it. -->
+    <div id="map">
+
+        <!-- Where you land: the only thing visible without scrolling -->
+        <div class="camp" id="start">
+            <h1>The Side Quest Map</h1>
+            <p>You are here. The main quest is somewhere on this map.</p>
+            <p>Everything else is a side quest. <span class="hint">Scroll in any direction.</span></p>
+            <p class="small">↑ ↓ ← →</p>
+        </div>
+
+        <!-- The compass is the required image. It points nowhere useful. -->
+        <img src="img/compass.svg" alt="A compass with every needle pointing to a side quest" id="compass">
+
+        <!-- Side quests, scattered so you have to scroll to find each one -->
+        <div class="quest" id="quest-coffee">
+            <h2>Side Quest: One More Coffee</h2>
+            <p>Reward: 15 minutes of feeling productive.</p>
+            <p class="small">Repeatable. Does not count toward the main quest.</p>
+        </div>
+
+        <div class="quest" id="quest-tabs">
+            <h2>Side Quest: Close the 47 Tabs</h2>
+            <p>You will open 12 new ones while doing this.</p>
+            <p class="small">Difficulty: <span class="hard">impossible</span></p>
+        </div>
+
+        <div class="quest" id="quest-room">
+            <h2>Side Quest: Reorganize the Room</h2>
+            <p>It was fine. You know it was fine.</p>
+        </div>
+
+        <div class="quest" id="quest-scroll">
+            <h2>Side Quest: Scroll</h2>
+            <p>You are literally doing it right now.</p>
+            <p class="small">Reward: none. Cost: 40 minutes.</p>
+        </div>
+
+        <div class="quest" id="quest-playlist">
+            <h2>Side Quest: The Perfect Study Playlist</h2>
+            <p>Three hours in, zero songs played, zero pages read.</p>
+        </div>
+
+        <!-- Secrets. Faded, small, placed at the edges and corners. -->
+        <p class="secret" id="secret-north">you went all the way up here. there is nothing up here. go do the assignment.</p>
+        <p class="secret" id="secret-west">a reminder from past you: the deadline did not move.</p>
+        <p class="secret" id="secret-east">the side quests will still be there tomorrow. they always are.</p>
+        <p class="secret" id="secret-south">if you found this one you have scrolled 2600 pixels. that is commitment. imagine that on the main quest.</p>
+
+        <!-- The main quest, bottom right, the furthest point from where you started -->
+        <div id="main-quest">
+            <h2>MAIN QUEST</h2>
+            <p class="objective">Submit the assignment due at 11:59.</p>
+            <p>You scrolled past five side quests to get here, so you already know the trick: the main quest was never hidden. It was just not where you were looking.</p>
+            <p class="small">Main quest. Now. The side quests will still be there.</p>
+            <p><a href="#start">↖ back to the start</a></p>
+        </div>
+
+    </div>
+
+</body>
+</html>
