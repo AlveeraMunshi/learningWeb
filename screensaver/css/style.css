@@ -1,0 +1,268 @@
+/* Away From Keyboard
+   Still page -> animated page, switched by a checkbox.
+   Requirements covered:
+     pseudo-states  : .switch:hover, .switch:active, #away:checked
+     transition     : .switch, .work, .saver, .screen
+     keyframes      : bounce, drift, blink
+     interaction    : nothing animates until #away is checked */
+
+:root {
+    --wall: #ececf0;
+    --desk: #c8a27a;
+    --bezel: #2a2a2e;
+    --screen: #f7f4ea;
+    --saver: #06060c;
+    --ink: #1a1a1a;
+    --accent: #e4572e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink);
+    background: linear-gradient(to bottom, var(--wall) 0 62%, var(--desk) 62% 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* the switch itself stays off screen; the label is the control */
+#away {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.desk {
+    width: min(900px, 92vw);
+    text-align: center;
+}
+
+/* ---------- the monitor ---------- */
+
+.monitor {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.screen {
+    position: relative;
+    height: 460px;
+    border: 18px solid var(--bezel);
+    border-radius: 14px;
+    background: var(--screen);
+    overflow: hidden;
+    transition: background-color 1.2s ease;
+}
+
+.stand {
+    width: 160px;
+    height: 36px;
+    margin: 0 auto;
+    background: var(--bezel);
+    border-radius: 0 0 20px 20px;
+}
+
+/* ---------- still state ---------- */
+
+.work {
+    padding: 36px 40px;
+    text-align: left;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.work h1 {
+    margin: 0 0 8px;
+    font-size: 2.2rem;
+    font-weight: normal;
+}
+
+.work p {
+    margin: 0 0 6px;
+}
+
+.small {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.tabs {
+    list-style: none;
+    padding: 0;
+    margin: 28px 0 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tabs li {
+    padding: 8px 14px;
+    background: #fff;
+    border: 1px solid #d6d2c4;
+    border-bottom: 3px solid #d6d2c4;
+    font-size: 0.9rem;
+    transition: border-bottom-color 0.3s ease, transform 0.3s ease;
+}
+
+.tabs li:hover {
+    border-bottom-color: var(--accent);
+    transform: translateY(-3px);
+}
+
+/* ---------- screensaver state (hidden and frozen until checked) ---------- */
+
+.saver {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    pointer-events: none;
+}
+
+.brb {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 6px 18px;
+    font-size: 3rem;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    color: #fff;
+    background: var(--accent);
+    border-radius: 6px;
+    animation: bounce 11s linear infinite alternate;
+    animation-play-state: paused;
+}
+
+.star {
+    position: absolute;
+    bottom: -40px;
+    font-size: 1.6rem;
+    color: #fff7c2;
+    animation: drift 9s linear infinite;
+    animation-play-state: paused;
+}
+
+.s1 { left: 8%;  animation-duration: 8s;  animation-delay: 0s; }
+.s2 { left: 28%; animation-duration: 11s; animation-delay: 1.5s; }
+.s3 { left: 50%; animation-duration: 7s;  animation-delay: 3s; }
+.s4 { left: 68%; animation-duration: 12s; animation-delay: 0.7s; }
+.s5 { left: 88%; animation-duration: 9s;  animation-delay: 2.2s; }
+
+.toast {
+    position: absolute;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #9a9ab0;
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: blink 2.4s steps(1) infinite;
+    animation-play-state: paused;
+}
+
+/* ---------- the flip: still -> animated ---------- */
+
+#away:checked ~ .desk .screen {
+    background: var(--saver);
+}
+
+#away:checked ~ .desk .work {
+    opacity: 0;
+    transform: scale(0.96);
+}
+
+#away:checked ~ .desk .saver {
+    opacity: 1;
+}
+
+#away:checked ~ .desk .brb,
+#away:checked ~ .desk .star,
+#away:checked ~ .desk .toast {
+    animation-play-state: running;
+}
+
+/* ---------- the switch ---------- */
+
+.switch {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 12px 26px;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.35s ease, color 0.35s ease, transform 0.35s ease, letter-spacing 0.35s ease;
+}
+
+.switch:hover {
+    background: var(--ink);
+    color: #fff;
+    letter-spacing: 0.08em;
+    transform: translateY(-2px);
+}
+
+.switch:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+.switch .off {
+    display: none;
+}
+
+#away:checked ~ .desk .switch .on {
+    display: none;
+}
+
+#away:checked ~ .desk .switch .off {
+    display: inline;
+}
+
+#away:checked ~ .desk .switch {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+#away:checked ~ .desk .switch:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.note {
+    margin: 14px 0 0;
+    font-size: 0.85rem;
+    color: #555;
+}
+
+/* ---------- keyframes ---------- */
+
+@keyframes bounce {
+    0%   { transform: translate(0, 0); }
+    20%  { transform: translate(680px, 120px); }
+    40%  { transform: translate(90px, 340px); }
+    60%  { transform: translate(700px, 300px); }
+    80%  { transform: translate(260px, 20px); }
+    100% { transform: translate(640px, 360px); }
+}
+
+@keyframes drift {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(-520px) rotate(360deg); opacity: 0; }
+}
+
+@keyframes blink {
+    0%, 60% { opacity: 1; }
+    61%, 100% { opacity: 0; }
+}

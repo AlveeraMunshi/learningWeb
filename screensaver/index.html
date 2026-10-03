@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Away From Keyboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- The whole page is still until the checkbox is checked. The checkbox is
+         the "step away" switch: everything that moves is a sibling of it, so
+         #away:checked ~ ... can start the keyframe animations with no JavaScript. -->
+    <input type="checkbox" id="away">
+
+    <main class="desk">
+
+        <section class="monitor">
+            <div class="screen">
+                <!-- Still state: a desktop with work on it -->
+                <div class="work">
+                    <h1>Away From Keyboard</h1>
+                    <p>Nothing on this screen moves while you are here.</p>
+                    <p class="small">47 tabs open. 1 assignment due at 11:59. 0 progress.</p>
+                    <ul class="tabs">
+                        <li>deadline.docx</li>
+                        <li>one more video</li>
+                        <li>the group chat</li>
+                        <li>definitely studying</li>
+                    </ul>
+                </div>
+
+                <!-- Screensaver state: only animates once #away is checked -->
+                <div class="saver">
+                    <p class="brb">brb</p>
+                    <span class="star s1">&#10022;</span>
+                    <span class="star s2">&#10022;</span>
+                    <span class="star s3">&#10022;</span>
+                    <span class="star s4">&#10022;</span>
+                    <span class="star s5">&#10022;</span>
+                    <p class="toast">the deadline did not move</p>
+                </div>
+            </div>
+            <div class="stand"></div>
+        </section>
+
+        <!-- The interaction. Hover it for the pseudo-state and transition,
+             click it to flip the page from still to animated. -->
+        <label for="away" class="switch">
+            <span class="on">step away from the desk</span>
+            <span class="off">come back</span>
+        </label>
+
+        <p class="note">A screensaver only exists when nobody is looking. Hover the switch, then click it.</p>
+
+    </main>
+
+</body>
+</html>
