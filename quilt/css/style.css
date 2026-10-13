@@ -1,13 +1,14 @@
 /* Side Quest Quilt
-   Same palette as the Side Quest Map (bigwebsite/), five block shapes
-   repeated and rotated across a 6x4 CSS grid so it reads as a pattern. */
+   Loot-colored version: same five block shapes as before, but pulled from a
+   full quest-reward palette instead of just green and gold, because a quilt
+   made entirely of two colors read more "spreadsheet" than "treasure chest." */
 
 html, body {
     margin: 0;                              /* margin */
     padding: 0;                             /* padding */
     width: 100%;                            /* width */
     height: 100%;                           /* height */
-    background-color: #0f1a12;              /* background-color */
+    background-color: #140f1f;              /* background-color: deep dungeon purple */
     overflow: hidden;
 }
 
@@ -17,7 +18,7 @@ html, body {
     grid-template-rows: repeat(4, 1fr);
     width: 100vw;
     height: 100vh;
-    border: 10px solid #0f1a12;
+    border: 10px solid #140f1f;
     box-sizing: border-box;
 }
 
@@ -25,57 +26,93 @@ html, body {
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    border: 1px solid #0f1a12;
+    border: 1px solid #140f1f;
 }
 
-/* 1. solid square, three colorways */
-.block.solid {
-    background-color: #c49a3a;              /* gold */
+/* 1. solid square, loot-rarity colorways: common green, rare blue, legendary gold, epic pink */
+.block.solid.common {
+    background-color: #2f9e5c;
 }
-.block.solid.green {
-    background-color: #2f5538;
+.block.solid.rare {
+    background-color: #2f8fd6;
 }
-.block.solid.cream {
-    background-color: #e8e3d0;
+.block.solid.legendary {
+    background-color: #e8b93a;
 }
-
-/* 2. half-square triangle, split diagonally with a gradient */
-.block.triangle {
-    background: linear-gradient(135deg, #2f5538 50%, #e8e3d0 50%);
+.block.solid.epic {
+    background-color: #d6448c;
 }
 
-/* 3. quarter circle, one rounded corner */
-.block.quarter {
-    background-color: #142417;
+/* 2. half-square triangle, split diagonally between two colors */
+.block.triangle.sunset {
+    background: linear-gradient(135deg, #ff6b4a 50%, #ffce54 50%);
+}
+.block.triangle.lagoon {
+    background: linear-gradient(135deg, #2bc4c4 50%, #1e3a8a 50%);
+}
+.block.triangle.berry {
+    background: linear-gradient(135deg, #b33fd6 50%, #ff6b9d 50%);
+}
+
+/* 3. quarter circle, one rounded corner, color glowing out of a dark tile */
+.block.quarter.ember {
+    background-color: #1a1030;
+    background-image: radial-gradient(circle at top left, #ff7a3d 60%, transparent 61%);
     border-radius: 100% 0 0 0;
-    background-image: radial-gradient(circle at top left, #c49a3a 60%, transparent 61%);
+}
+.block.quarter.aqua {
+    background-color: #1a1030;
+    background-image: radial-gradient(circle at top left, #2bd6c4 60%, transparent 61%);
+    border-radius: 100% 0 0 0;
+}
+.block.quarter.gold {
+    background-color: #1a1030;
+    background-image: radial-gradient(circle at top left, #e8b93a 60%, transparent 61%);
+    border-radius: 100% 0 0 0;
 }
 
-/* 4. striped block, repeating diagonal stripes */
-.block.stripe {
+/* 4. striped block, repeating diagonal stripes, two colorways */
+.block.stripe.candy {
     background: repeating-linear-gradient(
         45deg,
-        #e8e3d0,
-        #e8e3d0 10px,
-        #2f5538 10px,
-        #2f5538 20px
+        #ff6b9d,
+        #ff6b9d 10px,
+        #ffce54 10px,
+        #ffce54 20px
+    );
+}
+.block.stripe.deepsea {
+    background: repeating-linear-gradient(
+        45deg,
+        #2bc4c4,
+        #2bc4c4 10px,
+        #1e3a8a 10px,
+        #1e3a8a 20px
     );
 }
 
-/* 5. nine-patch, a conic gradient standing in for four mini quadrants */
-.block.nine {
+/* 5. nine-patch, four-color conic gradient, two colorways */
+.block.nine.jewel {
     background: conic-gradient(
-        #c49a3a 0deg 90deg,
-        #2f5538 90deg 180deg,
-        #e8e3d0 180deg 270deg,
-        #142417 270deg 360deg
+        #d6448c 0deg 90deg,
+        #2f8fd6 90deg 180deg,
+        #e8b93a 180deg 270deg,
+        #2f9e5c 270deg 360deg
+    );
+}
+.block.nine.sunset {
+    background: conic-gradient(
+        #ff6b4a 0deg 90deg,
+        #ffce54 90deg 180deg,
+        #b33fd6 180deg 270deg,
+        #2bc4c4 270deg 360deg
     );
 }
 .block.nine.faint {
-    opacity: 0.6;                           /* opacity */
+    opacity: 0.65;                          /* opacity */
 }
 
-/* rotation, so the five shapes above tile into more than five visible looks */
+/* rotation, so the same shapes tile into more apparent variety */
 .block.r0   { transform: rotate(0deg); }
 .block.r90  { transform: rotate(90deg); }
 .block.r180 { transform: rotate(180deg); }
