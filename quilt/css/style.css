@@ -1,0 +1,82 @@
+/* Side Quest Quilt
+   Same palette as the Side Quest Map (bigwebsite/), five block shapes
+   repeated and rotated across a 6x4 CSS grid so it reads as a pattern. */
+
+html, body {
+    margin: 0;                              /* margin */
+    padding: 0;                             /* padding */
+    width: 100%;                            /* width */
+    height: 100%;                           /* height */
+    background-color: #0f1a12;              /* background-color */
+    overflow: hidden;
+}
+
+#quilt {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: 100vw;
+    height: 100vh;
+    border: 10px solid #0f1a12;
+    box-sizing: border-box;
+}
+
+.block {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid #0f1a12;
+}
+
+/* 1. solid square, three colorways */
+.block.solid {
+    background-color: #c49a3a;              /* gold */
+}
+.block.solid.green {
+    background-color: #2f5538;
+}
+.block.solid.cream {
+    background-color: #e8e3d0;
+}
+
+/* 2. half-square triangle, split diagonally with a gradient */
+.block.triangle {
+    background: linear-gradient(135deg, #2f5538 50%, #e8e3d0 50%);
+}
+
+/* 3. quarter circle, one rounded corner */
+.block.quarter {
+    background-color: #142417;
+    border-radius: 100% 0 0 0;
+    background-image: radial-gradient(circle at top left, #c49a3a 60%, transparent 61%);
+}
+
+/* 4. striped block, repeating diagonal stripes */
+.block.stripe {
+    background: repeating-linear-gradient(
+        45deg,
+        #e8e3d0,
+        #e8e3d0 10px,
+        #2f5538 10px,
+        #2f5538 20px
+    );
+}
+
+/* 5. nine-patch, a conic gradient standing in for four mini quadrants */
+.block.nine {
+    background: conic-gradient(
+        #c49a3a 0deg 90deg,
+        #2f5538 90deg 180deg,
+        #e8e3d0 180deg 270deg,
+        #142417 270deg 360deg
+    );
+}
+.block.nine.faint {
+    opacity: 0.6;                           /* opacity */
+}
+
+/* rotation, so the five shapes above tile into more than five visible looks */
+.block.r0   { transform: rotate(0deg); }
+.block.r90  { transform: rotate(90deg); }
+.block.r180 { transform: rotate(180deg); }
+.block.r270 { transform: rotate(270deg); }
