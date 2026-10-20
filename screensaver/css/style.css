@@ -140,20 +140,24 @@ body {
     animation-play-state: paused;
 }
 
-.star {
+/* the things my roommate keeps saying she'll do later, drifting up and off */
+.postpone {
     position: absolute;
     bottom: -40px;
-    font-size: 1.6rem;
+    white-space: nowrap;
+    font-size: 1.15rem;
+    font-style: italic;
     color: #fff7c2;
+    opacity: 0.85;
     animation: drift 9s linear infinite;
     animation-play-state: paused;
 }
 
-.s1 { left: 8%;  animation-duration: 8s;  animation-delay: 0s; }
-.s2 { left: 28%; animation-duration: 11s; animation-delay: 1.5s; }
-.s3 { left: 50%; animation-duration: 7s;  animation-delay: 3s; }
-.s4 { left: 68%; animation-duration: 12s; animation-delay: 0.7s; }
-.s5 { left: 88%; animation-duration: 9s;  animation-delay: 2.2s; }
+.p1 { left: 6%;  animation-duration: 10s; animation-delay: 0s; }
+.p2 { left: 30%; animation-duration: 13s; animation-delay: 2.5s; }
+.p3 { left: 54%; animation-duration: 9s;  animation-delay: 5s; }
+.p4 { left: 74%; animation-duration: 14s; animation-delay: 1.2s; }
+.p5 { left: 20%; animation-duration: 12s; animation-delay: 7s; }
 
 .toast {
     position: absolute;
@@ -162,8 +166,9 @@ body {
     transform: translateX(-50%);
     margin: 0;
     color: #9a9ab0;
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
     text-transform: uppercase;
     animation: blink 2.4s steps(1) infinite;
     animation-play-state: paused;
@@ -185,7 +190,7 @@ body {
 }
 
 #away:checked ~ .desk .brb,
-#away:checked ~ .desk .star,
+#away:checked ~ .desk .postpone,
 #away:checked ~ .desk .toast {
     animation-play-state: running;
 }
@@ -249,17 +254,18 @@ body {
 @keyframes bounce {
     0%   { transform: translate(0, 0); }
     20%  { transform: translate(680px, 120px); }
-    40%  { transform: translate(90px, 340px); }
-    60%  { transform: translate(700px, 300px); }
+    40%  { transform: translate(90px, 300px); }
+    60%  { transform: translate(700px, 260px); }
     80%  { transform: translate(260px, 20px); }
-    100% { transform: translate(640px, 360px); }
+    100% { transform: translate(640px, 300px); }
 }
 
 @keyframes drift {
-    0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
-    10%  { opacity: 1; }
-    90%  { opacity: 1; }
-    100% { transform: translateY(-520px) rotate(360deg); opacity: 0; }
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    10%  { opacity: 0.9; }
+    50%  { transform: translateY(-260px) translateX(16px); }
+    90%  { opacity: 0.9; }
+    100% { transform: translateY(-520px) translateX(0); opacity: 0; }
 }
 
 @keyframes blink {
