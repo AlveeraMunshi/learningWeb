@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 140" width="210" height="140" role="img" aria-label="A terminal fitting a dose-response curve and printing the IC50 and R squared">
+  <rect x="2" y="2" width="206" height="136" rx="7" fill="#1a1a1a"/>
+  <rect x="2" y="2" width="206" height="22" rx="7" fill="#2a2a2e"/>
+  <rect x="2" y="16" width="206" height="8" fill="#2a2a2e"/>
+  <circle cx="16" cy="13" r="3.4" fill="#e4572e"/>
+  <circle cx="28" cy="13" r="3.4" fill="#d6d2c4" opacity="0.5"/>
+  <circle cx="40" cy="13" r="3.4" fill="#d6d2c4" opacity="0.3"/>
+  <text x="56" y="16.5" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.6" fill="#d6d2c4" opacity="0.65">fit_dose_response.py</text>
+
+  <g font-family="ui-monospace, Menlo, Consolas, monospace" font-size="7.6" xml:space="preserve">
+    <text x="10" y="41"><tspan fill="#e4572e">$ </tspan><tspan fill="#f7f4ea">python fit.py --plate 14</tspan></text>
+    <text x="10" y="57"><tspan fill="#8fb3a0">def </tspan><tspan fill="#f7f4ea">hill(x, top, bot, ic50, n):</tspan></text>
+    <text x="24" y="70"><tspan fill="#8fb3a0">return </tspan><tspan fill="#f7f4ea">bot+(top-bot)/(1+(x/ic50)**n)</tspan></text>
+    <text x="10" y="86" fill="#f7f4ea">popt, _ = curve_fit(hill, dose, resp)</text>
+    <text x="10" y="104" fill="#d6d2c4" opacity="0.55">IC50 = 0.42 uM</text>
+    <text x="10" y="116" fill="#d6d2c4" opacity="0.55">R^2  = 0.981</text>
+    <text x="10" y="130" fill="#e4572e">6 hits above threshold</text>
+  </g>
+</svg>
