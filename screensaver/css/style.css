@@ -114,6 +114,41 @@ body {
     transform: translateY(-3px);
 }
 
+/* ---------- the two windows open on the desktop ---------- */
+
+.panels {
+    display: flex;
+    gap: 22px;
+    margin: 22px 0 0;
+    flex-wrap: wrap;
+}
+
+.panel {
+    margin: 0;
+    padding: 10px 10px 6px;
+    background: #fff;
+    border: 1px solid #d6d2c4;
+    border-bottom: 3px solid #d6d2c4;
+    transition: border-bottom-color 0.3s ease, transform 0.3s ease;
+}
+
+.panel img {
+    display: block;
+    width: 170px;
+    height: auto;
+}
+
+.panel figcaption {
+    margin-top: 4px;
+    font-size: 0.72rem;
+    color: #777;
+}
+
+.panel:hover {
+    border-bottom-color: var(--accent);
+    transform: translateY(-3px);
+}
+
 /* ---------- screensaver state (hidden and frozen until checked) ---------- */
 
 .saver {
@@ -126,6 +161,7 @@ body {
 
 .brb {
     position: absolute;
+    z-index: 2;
     left: 0;
     top: 0;
     margin: 0;
@@ -143,6 +179,7 @@ body {
 /* the things my roommate keeps saying she'll do later, drifting up and off */
 .postpone {
     position: absolute;
+    z-index: 2;
     bottom: -40px;
     white-space: nowrap;
     font-size: 1.15rem;
@@ -159,8 +196,23 @@ body {
 .p4 { left: 74%; animation-duration: 14s; animation-delay: 1.2s; }
 .p5 { left: 20%; animation-duration: 12s; animation-delay: 7s; }
 
+/* the biologics half of the brain, tumbling around while nothing gets done */
+.floater {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 0;
+    width: 230px;
+    height: auto;
+    margin: -130px 0 0 -115px;
+    opacity: 0.22;
+    animation: tumble 34s ease-in-out infinite;
+    animation-play-state: paused;
+}
+
 .toast {
     position: absolute;
+    z-index: 2;
     left: 50%;
     bottom: 22px;
     transform: translateX(-50%);
@@ -191,6 +243,7 @@ body {
 
 #away:checked ~ .desk .brb,
 #away:checked ~ .desk .postpone,
+#away:checked ~ .desk .floater,
 #away:checked ~ .desk .toast {
     animation-play-state: running;
 }
@@ -271,4 +324,12 @@ body {
 @keyframes blink {
     0%, 60% { opacity: 1; }
     61%, 100% { opacity: 0; }
+}
+
+@keyframes tumble {
+    0%   { transform: translate(0, 0) rotate(-10deg); }
+    25%  { transform: translate(34px, -18px) rotate(6deg); }
+    50%  { transform: translate(12px, 26px) rotate(22deg); }
+    75%  { transform: translate(-30px, -10px) rotate(4deg); }
+    100% { transform: translate(0, 0) rotate(-10deg); }
 }
