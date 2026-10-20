@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 132" width="120" height="132" role="img" aria-label="An IgG antibody, the Y shape biologics are built on">
+  <g fill="none" stroke="#fff7c2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity="0.92">
+    <!-- heavy chains: the two Fab arms meeting at the hinge -->
+    <path d="M 24,20 L 60,64"/>
+    <path d="M 96,20 L 60,64"/>
+    <!-- Fc stem -->
+    <path d="M 60,64 L 60,116"/>
+  </g>
+  <!-- light chains, running alongside the outer edge of each arm -->
+  <g fill="none" stroke="#fff7c2" stroke-width="3.4" stroke-linecap="round" opacity="0.6">
+    <path d="M 14,30 L 42,64"/>
+    <path d="M 106,30 L 78,64"/>
+  </g>
+  <!-- antigen-binding tips -->
+  <circle cx="24" cy="20" r="6.2" fill="#e4572e"/>
+  <circle cx="96" cy="20" r="6.2" fill="#e4572e"/>
+  <circle cx="14" cy="30" r="3.6" fill="#e4572e" opacity="0.75"/>
+  <circle cx="106" cy="30" r="3.6" fill="#e4572e" opacity="0.75"/>
+  <!-- hinge -->
+  <circle cx="60" cy="64" r="4" fill="#fff7c2" opacity="0.9"/>
+</svg>
