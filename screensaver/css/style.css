@@ -118,7 +118,7 @@ body {
 
 .panels {
     display: flex;
-    gap: 22px;
+    gap: 14px;
     margin: 22px 0 0;
     flex-wrap: wrap;
 }
@@ -134,7 +134,7 @@ body {
 
 .panel img {
     display: block;
-    width: 170px;
+    width: 148px;
     height: auto;
 }
 
