@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>99%</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main class="screen">
+
+        <h1>99%</h1>
+        <p class="sub">A loading bar that tells you the truth about what it is doing.</p>
+
+        <!-- The bar. Its width is the only thing the script actually changes,
+             along with the two lines of text under it. -->
+        <div class="bar">
+            <div class="fill" id="fill"></div>
+        </div>
+
+        <p class="percent" id="percent">0%</p>
+        <p class="status" id="status">press the button, nothing is loading</p>
+
+        <!-- The event listener is attached to this button in js/script.js -->
+        <button id="go" class="go">load</button>
+
+        <p class="note">No files are being fetched. There is nothing to load. That is the piece.</p>
+
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
