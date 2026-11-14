@@ -1,5 +1,8 @@
 /* 99% — JavaScript Test exercise
-   The page is deliberately plain. The JavaScript is the assignment. */
+   The type follows the designmodo html-website-templates system: Roboto,
+   body copy at weight 300, the display number on their ultraBold spec with
+   the tracking pulled in, and opacity doing the hierarchy. The JavaScript is
+   still the assignment. */
 
 :root {
     --ink: #e8e4dc;
@@ -18,7 +21,13 @@ body {
     justify-content: center;
     background: var(--bg);
     color: var(--ink);
-    font-family: "SF Mono", "Consolas", monospace;
+    /* Their body font, and their body weight: 300 once there is room for it. */
+    font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
     padding: 1.5rem;
 }
 
@@ -26,16 +35,26 @@ body {
     width: min(34rem, 100%);
 }
 
+/* The number, on their ultraBold heading spec: weight 800, tracking at
+   -0.03em, leading closed right up so it reads as one block. */
 h1 {
     font-size: clamp(4rem, 18vw, 7rem);
-    margin: 0;
-    letter-spacing: -0.04em;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    margin: 0 0 0.75rem;
 }
 
+/* Their p.hero: larger than body copy, still weight 300, tracking slightly
+   tight. text-wrap keeps it off a one-word last line. */
 .sub {
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    line-height: 1.45;
     color: var(--dim);
-    margin: 0 0 3rem;
-    line-height: 1.6;
+    margin: 0 0 2.75rem;
+    text-wrap: pretty;
 }
 
 .bar {
@@ -52,25 +71,36 @@ h1 {
     transition: width 0.45s ease, background-color 0.45s ease;
 }
 
+/* tabular-nums keeps the number from shifting width as it counts up. */
 .percent {
-    font-size: 2rem;
-    margin: 1.25rem 0 0.25rem;
+    font-size: 2.25rem;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+    margin: 1.25rem 0 0.35rem;
 }
 
 .status {
+    font-size: 1rem;
+    font-weight: 400;
     color: var(--dim);
-    min-height: 3rem;
+    min-height: 3.2rem;
     margin: 0 0 2rem;
     line-height: 1.6;
+    text-wrap: pretty;
 }
 
 .go {
-    font: inherit;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
     color: var(--bg);
     background: var(--go);
     border: 0;
     border-radius: 2rem;
-    padding: 0.7rem 2rem;
+    padding: 0.75rem 2.1rem;
     cursor: pointer;
     transition: transform 0.15s ease, opacity 0.2s ease;
 }
@@ -83,8 +113,14 @@ h1 {
     transform: translateY(0);
 }
 
+/* Their small/micro end of the scale, de-emphasised with opacity the way
+   they fade list items and quotes. */
 .note {
+    font-size: 0.8rem;
+    font-weight: 300;
     color: var(--dim);
-    font-size: 0.85rem;
+    opacity: 0.85;
+    line-height: 1.55;
     margin-top: 2.5rem;
+    text-wrap: pretty;
 }
