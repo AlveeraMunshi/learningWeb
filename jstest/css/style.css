@@ -1,0 +1,90 @@
+/* 99% — JavaScript Test exercise
+   The page is deliberately plain. The JavaScript is the assignment. */
+
+:root {
+    --ink: #e8e4dc;
+    --dim: #8b8781;
+    --bg: #14151a;
+    --bar: #22242c;
+    --go: #6ee7a8;
+    --stuck: #e87d6e;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "SF Mono", "Consolas", monospace;
+    padding: 1.5rem;
+}
+
+.screen {
+    width: min(34rem, 100%);
+}
+
+h1 {
+    font-size: clamp(4rem, 18vw, 7rem);
+    margin: 0;
+    letter-spacing: -0.04em;
+}
+
+.sub {
+    color: var(--dim);
+    margin: 0 0 3rem;
+    line-height: 1.6;
+}
+
+.bar {
+    height: 1.5rem;
+    background: var(--bar);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    width: 0%;
+    background: var(--go);
+    transition: width 0.45s ease, background-color 0.45s ease;
+}
+
+.percent {
+    font-size: 2rem;
+    margin: 1.25rem 0 0.25rem;
+}
+
+.status {
+    color: var(--dim);
+    min-height: 3rem;
+    margin: 0 0 2rem;
+    line-height: 1.6;
+}
+
+.go {
+    font: inherit;
+    color: var(--bg);
+    background: var(--go);
+    border: 0;
+    border-radius: 2rem;
+    padding: 0.7rem 2rem;
+    cursor: pointer;
+    transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.go:hover {
+    transform: translateY(-2px);
+}
+
+.go:active {
+    transform: translateY(0);
+}
+
+.note {
+    color: var(--dim);
+    font-size: 0.85rem;
+    margin-top: 2.5rem;
+}
