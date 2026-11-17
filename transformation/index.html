@@ -8,18 +8,28 @@
 </head>
 <body class="sunrise">
 
-    <!-- The sky is one element that changes colour. Everything in it — the
-         sun, the moon, the stars, the clouds — moves or fades depending on
-         which class the body is wearing. -->
+    <!-- The four skies are four stacked sheets, and only the one matching the
+         body's class is opaque. A browser will not fade one gradient into
+         another, so fading the sheets themselves is the only way the sky
+         changes without jumping. The same trick colours the sun. -->
     <div class="sky">
+        <div class="sheet s-sunrise"></div>
+        <div class="sheet s-midday"></div>
+        <div class="sheet s-sunset"></div>
+        <div class="sheet s-night"></div>
         <div class="stars" id="stars"></div>
         <div class="moon"></div>
-        <div class="sun"></div>
+        <div class="sun">
+            <div class="disc d-sunrise"></div>
+            <div class="disc d-midday"></div>
+            <div class="disc d-sunset"></div>
+        </div>
         <div class="cloud cloud-one"></div>
         <div class="cloud cloud-two"></div>
         <div class="cloud cloud-three"></div>
         <div class="hill hill-back"></div>
         <div class="hill hill-front"></div>
+        <div class="grain"></div>
     </div>
 
     <nav class="controls">
