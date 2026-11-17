@@ -38,24 +38,10 @@ function makeStars() {
     }
 }
 
-// What the sky is called, in words.
-function nameOf(sky) {
-    if (sky === "sunrise") {
-        return "sunrise, the light coming back";
-    }
-    if (sky === "midday") {
-        return "midday, nothing happening";
-    }
-    if (sky === "sunset") {
-        return "sunset, everything orange for a minute";
-    }
-    return "night, and then it does it again";
-}
-
 // Put on the sky at the current index. Everything else is CSS.
 function showSky() {
     document.body.className = skies[index];
-    readout.textContent = nameOf(skies[index]);
+    readout.textContent = skies[index];
 }
 
 // The next sky along. Past the end of the list it starts over, so the day
@@ -75,13 +61,13 @@ function start() {
         return;
     }
     timer = setInterval(nextSky, HOLD);
-    toggleButton.textContent = "hold it here";
+    toggleButton.textContent = "hold";
 }
 
 function stop() {
     clearInterval(timer);
     timer = null;
-    toggleButton.textContent = "let it go around";
+    toggleButton.textContent = "go";
 }
 
 function toggle() {
@@ -110,3 +96,4 @@ skipButton.addEventListener("click", skip);
 
 makeStars();
 showSky();
+start();
